@@ -27,18 +27,21 @@ Este sistema foi projetado para modernizar a operação de clínicas odontológi
 <summary>
 <b>Modelo Conceitual</b>
 <br>
-</i>
 </summary>
+<br/>
   <img src="/Modelo/Conceitual/Modelo_conceitual.png">
+  <br/>
 </details>
 
 <details>
 <summary>
 <b>Modelo Lógico</b>
 <br>
-</i>
+
 </summary>
+<br/>
   <img src="/Modelo/Logico/Modelo_logico.png">
+<br/>
 </details>
 
 ---
@@ -63,12 +66,13 @@ Este sistema foi projetado para modernizar a operação de clínicas odontológi
    ![Imagem de exemplo para Executar o código](/IMG_EXEMPLO/image-4.png)
    -->
 
-# 👥 Colaboradores
+<h1>👥 Colaboradores</h1>
 
-|                                                                                         Colaborador(es) | Nome (GitHub)                                             |
-| ------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------- |
-| <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/265863658?v=4" width="75"> | [**Ana Luisa**](https://github.com/devAnaLuX)             |
-|   <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/7592603?v=4" width="75"> | [**Lucas da Silva**](https://github.com/Phonedison)       |
-|  <img style="border-radius:50%;" src="https://avatars.githubusercontent.com/u/66911991?v=4" width="75"> | [**Rafael Albino**](https://github.com/Onzecimo)          |
-|  <img style="border-radius:50%" src="https://avatars.githubusercontent.com/u/267657658?v=4" width="75"> | [**Vinicius de Souza Lamas**](https://github.com/vLamass) |
-|  <img style="border-radius:50%" src="https://avatars.githubusercontent.com/u/267758048?v=4" width="75"> | [**Vitor Ribeiro**](https://github.com/vitorribeiro77)    |
+|                                                              Colaborador(es) | Nome (GitHub)                                             |
+| ---------------------------------------------------------------------------: | :-------------------------------------------------------- |
+| <img src="https://avatars.githubusercontent.com/u/265863658?v=4" width="75"> | [**Ana Luisa**](https://github.com/devAnaLuX)             |
+| <img src="https://avatars.githubusercontent.com/u/238934459?v=4" width="75"> | [**João Victor**](https://github.com/x-c-x-c)             |
+|   <img src="https://avatars.githubusercontent.com/u/7592603?v=4" width="75"> | [**Lucas da Silva**](https://github.com/Phonedison)       |
+|  <img src="https://avatars.githubusercontent.com/u/66911991?v=4" width="75"> | [**Rafael Albino**](https://github.com/Onzecimo)          |
+| <img src="https://avatars.githubusercontent.com/u/267657658?v=4" width="75"> | [**Vinicius de Souza Lamas**](https://github.com/vLamass) |
+| <img src="https://avatars.githubusercontent.com/u/267758048?v=4" width="75"> | [**Vitor Ribeiro**](https://github.com/vitorribeiro77)    |
