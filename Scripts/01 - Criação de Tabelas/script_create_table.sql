@@ -36,18 +36,24 @@ CREATE TABLE horario_atendimento (
     horario_final TIME NOT NULL,
     
     --> Declaração das chaves estrangeiras
-    id_dentista INTEGER REFERENCES dentista(id_dentista) NOT NULL  --> Vale apena um ON DELETE CASCADE ??
+    id_dentista INTEGER REFERENCES dentista(id_dentista)
+    -- NOT NULL ON DELETE SET NULL
+    --> Vale apena um ON DELETE CASCADE ??
 );
 
 --> DECLARAÇÃO DA TABELA CONSULTA
 CREATE TABLE consulta (
     id_consulta SERIAL PRIMARY KEY,
     data_horario TIMESTAMP NOT NULL,
-    status status_consulta NOT NULL DEFAULT 'Agendado', --> PENSEI EM COMEÇAR COMO 'AGENDADO' AO INVEZ DE VAZIO
+    status status_consulta NOT NULL DEFAULT 'Agendado',
+    --> PENSEI EM COMEÇAR COMO 'AGENDADO' AO INVEZ DE VAZIO
 
     --> Declaração das chaves estrangeiras
-    id_paciente INTEGER REFERENCES paciente(id_paciente) NOT NULL,
-    id_dentista INTEGER REFERENCES dentista(id_dentista) NOT NULL
+    id_paciente INTEGER REFERENCES paciente(id_paciente),
+    -- NOT NULL ON DELETE SET NULL,
+
+    id_dentista INTEGER REFERENCES dentista(id_dentista)
+    -- NOT NULL ON DELETE SET NULL
 );
 
 ---> DECLARAÇÃO DA TABELA LIGAÇÃO (M,M : Consulta <---> Procedimento)
