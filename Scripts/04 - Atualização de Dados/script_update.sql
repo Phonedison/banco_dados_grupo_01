@@ -14,7 +14,7 @@ WHERE cpf = '56789012344';
 --> Atualiza a tabela consulta, somando 2h' ao horário marcado para todos os agendamentos do dentista com o id_dentista igual 2 que foram marcados no dia '2024-05-10'
 UPDATE consulta
 SET
-  data_horario = data_horario + '02 hours 30 minutes'
+  data_horario = data_horario + '02 hours'  
 WHERE id_dentista = 2
 AND data_horario::DATE = '2024-05-11'
 AND status = 'Concluido';

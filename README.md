@@ -1,70 +1,51 @@
-# 🦷 Trabalho DB: Sistema de Gestão para Clínica Odontológica
+# 🦷 Sistema de Gestão para Clínica Odontológica
 
-Este repositório contém o projeto de modelagem e implementação de um banco de dados relacional para a gestão integral de uma clínica odontológica, abrangendo desde o cadastro de pacientes até o controle de agendamentos e procedimentos.
+## 📖 Sobre o Projeto
 
-## 📌 Contextualização do Cenário
+Este projeto consiste no desenvolvimento de uma base de dado para uma clínica odontológica, com o objetivo de informatizar o controle de pacientes, dentistas, consultas e procedimentos realizados. A solução foi pensada para atender o fluxo operacional da clínica, permitindo o agendamento de consultas, registro de atendimentos e organização das informações de forma estruturada.
 
-Este sistema foi projetado para modernizar a operação de clínicas odontológicas de médio porte que buscam centralizar o fluxo de atendimento. A modelagem permite que a recepção gerencie agendas complexas de múltiplos dentistas, mantenha um histórico detalhado de prontuários dos pacientes e vincule procedimentos específicos a cada consulta, garantindo a integridade dos dados e a agilidade no acesso às informações clínicas sem a necessidade de prontuários físicos.
+> ⚠️ O sistema não contempla funcionalidades financeiras ou de faturamento.
 
-## 🛠️ Requisitos do Projeto
+## 🎯 Objetivos
 
-- **Funcionais:**
-  - **Gestão de Pacientes:** Cadastro completo, incluindo CPF e histórico.
-  - **Controle de Dentistas:** Registro profissional (CRO), especialidades e horários de atendimento.
-  - **Agendamentos:** Registro, atualização e cancelamento de consultas.
-  - **Procedimentos:** Catálogo de serviços oferecidos com descrição e duração.
-  - **Vínculos:** Associação de múltiplos procedimentos a uma única consulta.
-
-- **Não Funcionais (Implementação SQL):**
-  - **Modelagem completa:** Conceitual, Lógico e Físico.
-  - **Carga inicial de dados:** Mínimo de 10 registros por tabela.
-  - **Scripts de manipulação:** Updates, Deletes e criação de Índices.
-  - Consultas complexas (Agregações, Joins, Ordenação e Views).
-
-## 💻 Modelagem de Dados
-
-<details>
-<summary>
-<b>Modelo Conceitual</b>
-<br>
-</summary>
-<br/>
-  <img src="/Modelo/Conceitual/Modelo_conceitual.png">
-  <br/>
-</details>
-
-<details>
-<summary>
-<b>Modelo Lógico</b>
-<br>
-
-</summary>
-<br/>
-  <img src="/Modelo/Logico/Modelo_logico.png">
-<br/>
-</details>
+- Organizar o cadastro de pacientes e dentistas
+- Controlar o agendamento de consultas
+- Registrar atendimentos realizados
+- Estruturar um banco de dados completo (conceitual, lógico e físico)
+- Aplicar consultas SQL para análise de dados
 
 ---
 
-<!--
-# 🚀 Como Executar os Exercícios
+# ⚙️ Funcionalidades
 
-1. **Clone o repositório:**
-   ```bash
-   git clone https://github.com/Phonedison/banco_dados_grupo_01
-   ```
-2. Abra o PgAdmin4.
-   ![Imagem de exemplo para abri o PgAdmin](/IMG_EXEMPLO/image.png)
+## 👤 Pacientes
 
-3. No menu superior, clique em Arquivo > Abrir Arquivo.
-   ![Imagem de exemplo para abrir um arquivo parte 1](/IMG_EXEMPLO/image-1.png)
+- Cadastro completo:
+  - Nome, CPF, data de nascimento
+  - Contato (telefone e e-mail)
+  - Endereço
+- Histórico de consultas vinculado
 
-4. Selecione o arquivo .por referente ao exercício que deseja testar.
-   ![Imagem de exemplo para abrir um arquivo parte 2](/IMG_EXEMPLO/image-2.png)
+## 🧑‍⚕️ Dentistas
 
-5. Clique no botão Executar (Play).
-   ![Imagem de exemplo para Executar o código](/IMG_EXEMPLO/image-4.png)
-   -->
+- Cadastro com:
+  - Nome, CPF e CRO
+  - Especialidade
+  - Horários de atendimento
+
+## 📅 Consultas
+
+- Agendamento com:
+  - Escolha de dentista
+  - Seleção de horário disponível
+
+- Registro de:
+  - Data e hora
+  - Descrição do atendimento
+  - Prescrição (quando necessário)
+- Funcionalidades:
+  - Atualização de consultas
+  - Cancelamento com regras de prazo
 
 <h1>👥 Colaboradores</h1>
 
