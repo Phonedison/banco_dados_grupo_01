@@ -16,8 +16,6 @@
 
 ```
 
----
-
 ### Para a tabela dentista :
 
 ```sql
@@ -31,11 +29,25 @@
 ('Patrícia Mendes Vaz',        '89012345678',      'ES-89012',    'Prótese Dentária'),
 ('Gustavo Henrique Luz',       '90123456789',      'GO-90123',    'Estomatologia'),
 ('Helena Silveira Ramos',      '01234567890',      'DF-01234',    'Odontogeriatria');
+
 ```
 
----
+### Para a tabela procedimento:
 
-### Para a tabela horario_dentista:
+```sql
+('Profilaxia Simples',	        'Remoção de placa bacteriana e polimento coronário.',	               	'00:40:00'),
+('Aplicação de Flúor',	        'Aplicação de flúor tópico para remineralização do esmalte.',	       	'00:37:00'),
+('Exame Clínico',	            	'Avaliação visual e tátil da cavidade bucal e tecidos moles.',	   		'00:20:00'),
+('Restauração de Resina',	    	'Reconstrução estética e funcional do dente 26 (Face O).',	       		'00:30:00'),
+('Manutenção Ortodôntica',	    'Troca de arcos e ativação do aparelho fixo superior.',	          		'00:14:00'),
+('Abertura Coronária',	        'Acesso aos canais radiculares para tratamento endodôntico.',	       	'00:22:00'),
+('Moldagem de Estudo',	        'Obtenção de modelo em gesso para planejamento de prótese.',	       	'00:39:00'),
+('Clareamento de Consultório',	'Aplicação de peróxido de hidrogênio a 35% com barreira gengival.',  	'00:50:00'),
+('Raspagem Subgengival',	    	'Remoção de cálculo dental em bolsas periodontais profundas.',	    	'00:60:00'),
+('Tomografia Computadorizada',	'Encaminhamento para exame de imagem 3D para implante.'	,            	'00:59:00');
+```
+
+### Para a tabela horario_atendimento:
 
 ```sql
 ('08:00:00',    '12:00:00',    1),
@@ -50,40 +62,24 @@
 ('10:00:00',    '16:00:00',    10);
 ```
 
----
-
 ### Para a tabela consulta:
 
 ```sql
---(data_horario,               status,        id_paciente,      id_dentista,      id_procedimento)
-  ('2024-05-10 08:30:00',        'Concluido',        1,             1,                1),
-  ('2024-05-10 10:00:00',        'Agendado',         2,             7,                7),
-  ('2024-05-11 14:00:00',        'Concluido',        3,             2,                2),
-  ('2024-05-12 09:15:00',        'Concluido',        4,             1,                1),
-  ('2024-05-12 11:00:00',        'Em andamento',     5,             4,                4),
-  ('2024-05-13 15:30:00',        'Agendado',         6,             8,                8),
-  ('2024-05-14 08:00:00',        'Cancelado',        7,             5,                5),
-  ('2024-05-14 16:45:00',        'Concluido',        8,             6,                6),
-  ('2024-05-15 10:30:00',        'Em andamento',     9,             5,                5),
-  ('2024-05-15 14:00:00',        'Agendado',         10,            3,                3);
-
+('2024-05-10 08:30:00',        'Concluido',        1,             1),
+('2024-05-10 10:00:00',        'Agendado',         2,             7),
+('2024-05-11 14:00:00',        'Concluido',        3,             2),
+('2024-05-12 09:15:00',        'Concluido',        4,             1),
+('2024-05-12 11:00:00',        'Em andamento',     5,             4),
+('2024-05-13 15:30:00',        'Agendado',         6,             8),
+('2024-05-14 08:00:00',        'Cancelado',        7,             5),
+('2024-05-14 16:45:00',        'Concluido',        8,             6),
+('2024-05-15 10:30:00',        'Em andamento',     9,             5),
+('2024-05-15 14:00:00',        'Agendado',         10,            3);
 ```
 
----
-
-### Para a tabela procedimento:
+### Para a tabela proc_consult_conter:
 
 ```sql
-('Profilaxia Simples',	        'Remoção de placa bacteriana e polimento coronário.',	               '00:40:00'),
-('Aplicação de Flúor',	        'Aplicação de flúor tópico para remineralização do esmalte.',	       '00:40:00'),
-('Exame Clínico',	              'Avaliação visual e tátil da cavidade bucal e tecidos moles.',	     '00:40:00'),
-('Restauração de Resina',	      'Reconstrução estética e funcional do dente 26 (Face O).',	         '00:40:00'),
-('Manutenção Ortodôntica',	    'Troca de arcos e ativação do aparelho fixo superior.',	             '00:40:00'),
-('Abertura Coronária',	        'Acesso aos canais radiculares para tratamento endodôntico.',	       '00:40:00'),
-('Moldagem de Estudo',	        'Obtenção de modelo em gesso para planejamento de prótese.',	       '00:40:00'),
-('Clareamento de Consultório',	'Aplicação de peróxido de hidrogênio a 35% com barreira gengival.',  '00:40:00'),
-('Raspagem Subgengival',	      'Remoção de cálculo dental em bolsas periodontais profundas.',	     '00:40:00'),
-('Tomografia Computadorizada',	'Encaminhamento para exame de imagem 3D para implante.'	,            '00:40:00');
+(1, 1), (1, 2), (2, 3), (3, 1),	(4, 4),
+(5, 2),	(5, 5),	(6, 3), (7, 1),	(8, 6);
 ```
-
----
