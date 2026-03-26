@@ -73,16 +73,16 @@
 ### Para a tabela procedimento:
 
 ```sql
-('Profilaxia Simples',	        'Remoção de placa bacteriana e polimento coronário.',	               1),
-('Aplicação de Flúor',	        'Aplicação de flúor tópico para remineralização do esmalte.',	       1),
-('Exame Clínico',	              'Avaliação visual e tátil da cavidade bucal e tecidos moles.',	     2),
-('Restauração de Resina',	      'Reconstrução estética e funcional do dente 26 (Face O).',	         3),
-('Manutenção Ortodôntica',	    'Troca de arcos e ativação do aparelho fixo superior.',	             4),
-('Abertura Coronária',	        'Acesso aos canais radiculares para tratamento endodôntico.',	       5),
-('Moldagem de Estudo',	        'Obtenção de modelo em gesso para planejamento de prótese.',	       6),
-('Clareamento de Consultório',	'Aplicação de peróxido de hidrogênio a 35% com barreira gengival.',  8),
-('Raspagem Subgengival',	      'Remoção de cálculo dental em bolsas periodontais profundas.',	     9),
-('Tomografia Computadorizada',	'Encaminhamento para exame de imagem 3D para implante.'	,           10);
+('Profilaxia Simples',	        'Remoção de placa bacteriana e polimento coronário.',	               '00:40:00'),
+('Aplicação de Flúor',	        'Aplicação de flúor tópico para remineralização do esmalte.',	       '00:40:00'),
+('Exame Clínico',	              'Avaliação visual e tátil da cavidade bucal e tecidos moles.',	     '00:40:00'),
+('Restauração de Resina',	      'Reconstrução estética e funcional do dente 26 (Face O).',	         '00:40:00'),
+('Manutenção Ortodôntica',	    'Troca de arcos e ativação do aparelho fixo superior.',	             '00:40:00'),
+('Abertura Coronária',	        'Acesso aos canais radiculares para tratamento endodôntico.',	       '00:40:00'),
+('Moldagem de Estudo',	        'Obtenção de modelo em gesso para planejamento de prótese.',	       '00:40:00'),
+('Clareamento de Consultório',	'Aplicação de peróxido de hidrogênio a 35% com barreira gengival.',  '00:40:00'),
+('Raspagem Subgengival',	      'Remoção de cálculo dental em bolsas periodontais profundas.',	     '00:40:00'),
+('Tomografia Computadorizada',	'Encaminhamento para exame de imagem 3D para implante.'	,            '00:40:00');
 ```
 
 ---

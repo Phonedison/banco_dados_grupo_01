@@ -42,8 +42,9 @@ CREATE TABLE procedimento (
     id_procedimento SERIAL PRIMARY KEY,
     nome_procedimento VARCHAR(150) NOT NULL,
     descricao VARCHAR(300) NOT NULL,
-    duracao TIME NOT NULL,
+    duracao TIME NOT NULL
 );
+
 --> CRIAÇÃO DA TABELA HORARIO ATENDIMENTO
 CREATE TABLE horario_atendimento (
     id_horario_atendimento SERIAL PRIMARY KEY,
@@ -51,5 +52,5 @@ CREATE TABLE horario_atendimento (
     horiario_final TIME NOT NULL,
 
     --> Declaração das chaves estrangeiras
-    id_dentista INT REFERENCES dentista(id_dentista),
+    id_dentista INT REFERENCES dentista(id_dentista)
 );
