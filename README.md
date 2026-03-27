@@ -177,23 +177,9 @@ O projeto contempla as três etapas de modelagem:
 
 ## 👥 Colaboradores
 
-<div align="Center" >
-<a href="https://github.com/devAnaLuX">
-<img style="border-radius:8px;" src="https://avatars.githubusercontent.com/u/265863658?v=4" width="130">
-</a>
-<a href="https://github.com/x-c-x-c">
-<img   style="border-radius:8px;"  src="https://avatars.githubusercontent.com/u/238934459?v=4" width="130">
-</a>
-<a href="https://github.com/Phonedison">
-<img   style="border-radius:8px;"  src="https://avatars.githubusercontent.com/u/7592603?v=4" width="130">
-</a>
-<a href="https://github.com/albino57">
-<img   style="border-radius:8px;"  src="https://avatars.githubusercontent.com/u/66911991?v=4" width="130">
-</a>
-<a href="https://github.com/vLamass">
-<img   style="border-radius:8px;"  src="https://avatars.githubusercontent.com/u/267657658?v=4" width="130">
-</a>
-<a href="https://github.com/vitorribeiro77">
-<img   style="border-radius:8px;"  src="https://avatars.githubusercontent.com/u/267758048?v=4" width="130">
-</a>
-</div>
+[<img src="https://avatars.githubusercontent.com/u/265863658?v=4" width="130">](https://github.com/devAnaLuX)
+[<img src="https://avatars.githubusercontent.com/u/238934459?v=4" width="130">](https://github.com/x-c-x-c)
+[<img src="https://avatars.githubusercontent.com/u/7592603?v=4" width="130">](https://github.com/Phonedison)
+[<img src="https://avatars.githubusercontent.com/u/66911991?v=4" width="130">](https://github.com/albino57)
+[<img src="https://avatars.githubusercontent.com/u/267657658?v=4" width="130">](https://github.com/vLamass)
+[<img src="https://avatars.githubusercontent.com/u/267758048?v=4" width="130">](https://github.com/vitorribeiro77)
