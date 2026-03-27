@@ -6,7 +6,7 @@
 ('Ana Maria Silva','12345678900','1993-05-20','11999887766','ana.silva@mail.com','Rua das Flores, 100'),
 ('Marcos Paulo Lima','23456789011','1980-08-12','11988776655','marcos.lima@mail.com','Av. Brasil, 210'),
 ('Pedro Almeida Oliveira','34567890122','1989-10-15','11977665544','pedro.almeida@mail.com','Rua Joana, 31'),
-('Paula Tejando Souza','45678901233','2001-09-07','11999886677','paula.souza@mail.com','Rua Curitiba, 44'),
+('Paula Alexo Souza','45678901233','2001-09-07','11999886677','paula.souza@mail.com','Rua Curitiba, 44'),
 ('Roberto Monteiro Dias','56789012344','1996-04-04','11999885522','roberto.dias@mail.com','Av. Paulista, 90'),
 ('Luciana Gomes Torres', '67890123455','1987-09-21','11999884321','luciana.torres@mail.com','Rua Verde, 17'),
 ('Camila Santoro Castro','78901234566','1995-12-23','11999881100','camila.castro@mail.com','Rua Bela, 75'),
