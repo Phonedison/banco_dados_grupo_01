@@ -37,8 +37,6 @@ CREATE TABLE horario_atendimento (
     
     --> Declaração das chaves estrangeiras
     id_dentista INTEGER REFERENCES dentista(id_dentista)
-    -- NOT NULL ON DELETE SET NULL
-    --> Vale apena um ON DELETE CASCADE ??
 );
 
 --> DECLARAÇÃO DA TABELA CONSULTA
@@ -49,14 +47,14 @@ CREATE TABLE consulta (
 
     --> Declaração das chaves estrangeiras
     id_paciente INTEGER REFERENCES paciente(id_paciente),
-
-    id_dentista INTEGER REFERENCES dentista(id_dentista)
+    id_dentista INTEGER REFERENCES dentista(id_dentista),
+    id_procedimento INTEGER REFERENCES procedimento(id_procedimento)
 );
 
 ---> DECLARAÇÃO DA TABELA LIGAÇÃO (M,M : Consulta <---> Procedimento)
 CREATE TABLE proc_consult_conter (  
     id_consulta INTEGER REFERENCES consulta(id_consulta) ON DELETE RESTRICT,
-    id_procedimento INTEGER REFERENCES procedimento(id_procedimento) ON DELETE RESTRICT,?
+    id_procedimento INTEGER REFERENCES procedimento(id_procedimento) ON DELETE RESTRICT,
 
     --> Definindo a chave da tabela 
     PRIMARY KEY (id_consulta, id_procedimento)
