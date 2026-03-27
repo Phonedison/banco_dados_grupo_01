@@ -242,7 +242,7 @@ VALUES
 
 --> COMANDO DE INSERÇÃO NA TABELA CONSULTA:
 INSERT INTO consulta
-	(data_horario, status, id_paciente, id_dentista)
+	(data_horario, status, id_paciente, id_dentista,id_procedimento)
 VALUES
 ('2024-05-10 08:30:00', 'Concluido', 1, 1, 1),   
 ('2024-05-10 10:00:00', 'Agendado', 2, 7, 4),    
@@ -312,14 +312,14 @@ SET
   status = 'Concluido'
 WHERE id_consulta = 5;
 
---> Atualiza o telefone do paciente de 'cpf  -> 56789012344' e 'endereço  -> Rua do Imperador, 100 - Centro, Petrópolis' 'telefone -> (24) 99999-8888' na tabela paciente
+--> Atualiza o telefone do paciente de 'cpf -> 56789012344' e 'endereço -> Rua do Imperador, 100 - Centro, Petrópolis' 'telefone -> (24) 99999-8888' na tabela paciente
 UPDATE paciente
 SET
   telefone = '(24) 99999-8888',
   endereco = 'Rua do Imperador, 100 - Centro, Petrópolis'
 WHERE cpf = '56789012344';
 
---> Atualiza a tabela consulta, somando 2h' ao horário marcado para todos os agendamentos do dentista com o id_dentista igual 2 que foram marcados no dia '2024-05-10'
+--> Atualiza a tabela consulta, somando 2h' ao horário marcado para todos os agendamentos do dentista com o id_dentista igual 2 que foram marcados no dia '2024-05-11'
 UPDATE consulta
 SET
   data_horario = data_horario + '02:00:00'  
@@ -330,20 +330,32 @@ AND status = 'Agendado';
 
 /* ********************* EXCLUSÃO DE REGISTROS ********************* */
 
---> Remove o horário final do dentista de id_dentista 3 que sejam acima ou igual a '18:00:00'
+--> Remove o horário do Dentista de id_dentista 3 que sejam acima ou igual a '13:00:00'
 DELETE FROM horario_atendimento
 WHERE id_dentista = 3
-AND horario_final >= '18:00:00';
+AND horario_final >= '13:00:00';
 
---> Remove um vinculo entre a consulta de id_consulta = 6 e id_procedimento = 2 na tabela proc_consult_conter
+--> Remove um vinculo entre a consulta de id_consulta igual a 10 de id_procedimento igual a 2 na tabela proc_consult_conter
 DELETE FROM proc_consult_conter
-WHERE id_consulta = 6
-AND id_procedimento = 2;
+WHERE id_consulta = 10 
+and id_procedimento = 2;
 
---> Remove da tabela consulta onde o status seja 'Cancelado' e data_horario maior que '2024-05-13 15:30:00'
-DELETE FROM consulta
-WHERE status = 'Cancelado'
-AND data_horario > '2024-05-13 15:30:00';
+--Remove da Tabela horario_atendimento aonde o horario inicial sejá igual a '08:00:00'.
+DELETE FROM horario_atendimento
+WHERE horario_inicial = '08:00:00'
+
+/*Exemplo de exclusão que não funcionou devido a restrição da foreign key*/
+
+--> Remove da Tabela Consulta onde status seja 'Agendado' e data_horario maior que '2024-05-15' não deleta por violar a restrição da foreign key.
+-- delete from consulta 
+-- where status = 'Agendado'
+-- and data_horario :: date >= '2024-05-15'
+
+
+/* Comando para verificar os DELETES */
+-- select * from consulta where id_consulta  = 10
+-- select * from horario_atendimento where horario_inicial < '09:00:00'
+-- select * from proc_consult_conter order by id_consulta;
 
 /* ********************* CONSULTAS CONTEXTUALIZADAS ********************* */
 
