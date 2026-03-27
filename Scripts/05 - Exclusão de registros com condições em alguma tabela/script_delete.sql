@@ -3,10 +3,10 @@ DELETE FROM horario_atendimento
 WHERE id_dentista = 3
 AND horario_final >= '13:00:00';
 
---> Remove um vinculo entre a consulta de id_consulta igual a 10 de id_procedimento igual a 2 na tabela proc_consult_conter
+--> Remove um vinculo entre a consulta de id_consulta igual a 10 de id_procedimento igual a 8 na tabela proc_consult_conter
 DELETE FROM proc_consult_conter 
 WHERE id_consulta = 10 
-and id_procedimento = 2;
+and id_procedimento = 8;
 
 --Remove da Tabela horario_atendimento aonde o horario inicial sejá igual a '08:00:00'.
 DELETE FROM horario_atendimento

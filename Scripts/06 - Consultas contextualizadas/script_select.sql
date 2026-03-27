@@ -156,5 +156,6 @@ FROM (
     LEFT JOIN consulta con --> Relaciona as tabelas 'consulta' com 'dentista'  
       ON den.id_dentista = con.id_dentista --> Garante que a pesquisa dos valores de 'id_dentista' de 'dentista' existentes em 'consulta'
 
+	  WHERE con.status = 'Concluido'
     GROUP BY den.id_dentista -->	Agrupa os valores utilizando como base o atributo 'nome_completo' de dentista
 );

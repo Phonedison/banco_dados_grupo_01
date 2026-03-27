@@ -335,10 +335,10 @@ DELETE FROM horario_atendimento
 WHERE id_dentista = 3
 AND horario_final >= '13:00:00';
 
---> Remove um vinculo entre a consulta de id_consulta igual a 10 de id_procedimento igual a 2 na tabela proc_consult_conter
+--> Remove um vinculo entre a consulta de id_consulta igual a 10 de id_procedimento igual a 8 na tabela proc_consult_conter
 DELETE FROM proc_consult_conter 
 WHERE id_consulta = 10 
-and id_procedimento = 2;
+and id_procedimento = 8;
 
 --Remove da Tabela horario_atendimento aonde o horario inicial sejá igual a '08:00:00'.
 DELETE FROM horario_atendimento
@@ -537,21 +537,18 @@ SELECT * FROM vw_porcentagem;
 
 
 SELECT
- --> Calcula a média da contagem e arredonda o valor para até 2 casas decimais do valor 'qtd_consultas'
-  ROUND( AVG(qtd_consultas) , 2) AS media_de_consulta
+
+  ROUND( AVG(qtd_consultas) , 2) AS media_de_consulta  --> Calcula a média da contagem e arredonda o valor para até 2 casas decimais do valor 'qtd_consultas'
 FROM (
 
   SELECT
-    --> Conta quantas consultas estão vinculadas a cada ID de dentista
-    COUNT(con.id_consulta) AS qtd_consultas
+    COUNT(con.id_consulta) AS qtd_consultas --> Conta quantas consultas estão vinculadas a cada ID de dentista
 
     FROM dentista den
+   
+    LEFT JOIN consulta con --> Relaciona as tabelas 'consulta' com 'dentista'  
+      ON den.id_dentista = con.id_dentista --> Garante que a pesquisa dos valores de 'id_dentista' de 'dentista' existentes em 'consulta'
 
-    --> Relaciona as tabelas 'consulta' com 'dentista'  
-    LEFT JOIN consulta con
-      --> Garante que a pesquisa dos valores de 'id_dentista' de 'dentista' existentes em 'consulta'
-      ON den.id_dentista = con.id_dentista
-
-	  -->	Agrupa os valores utilizando como base o atributo 'nome_completo' de dentista
-    GROUP BY den.id_dentista
+	  WHERE con.status = 'Concluido'
+    GROUP BY den.id_dentista -->	Agrupa os valores utilizando como base o atributo 'nome_completo' de dentista
 );
