@@ -73,9 +73,21 @@ O projeto contempla as três etapas de modelagem:
 
 ### 📷 Imagens dos modelos:
 
-![Modelo Conceitual](./assets/modelo_conceitual.png)
-
-![Modelo Lógico](./assets/modelo_logico.png)
+<div>
+<p>
+<a href="./Modelo/Conceitual/Modelo_conceitual.brM3">Modelo Conceitual</a>
+</p>
+<img src="./Modelo/Conceitual/Modelo_conceitual.png">
+</div>
+<br/>
+<br/>
+<br/>
+<div>
+<p>
+<a href="./Modelo/Logico/Modelo_logico.brM3">Modelo Logico</a>
+</p>
+<img src="./Modelo/Logico/Modelo_logico.png">
+</div>
 
 ### 🗄️ Estrutura do Banco de Dados
 
