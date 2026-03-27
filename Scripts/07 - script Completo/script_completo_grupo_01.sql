@@ -1,4 +1,6 @@
 /* ********************* SCRIPT CRIAÇÃO DB ********************* */
+--> Comando de criação da database
+CREATE DATABASE odontologia;
 
 --> Declaração do TYPO status_consulta
 CREATE TYPE status_consulta AS ENUM ('Cancelado', 'Em andamento', 'Concluido', 'Agendado');
