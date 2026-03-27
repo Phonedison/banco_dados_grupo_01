@@ -64,7 +64,7 @@ CREATE TABLE proc_consult_conter (
 
 /* ********************* INSERÇÃO DE VALORES ********************* */
 --> COMANDO DE INSERÇÃO NA TABELA PACIENTE:
-INSERT INTO paciente
+INSERT INTO paciente -- feito
 	(nome_completo, cpf, data_nascimento, telefone, email, endereco)
 VALUES
 	('Ana Maria Silva','12345678900','1993-05-20','11999887766','ana.silva@mail.com','Rua das Flores, 100'),
@@ -112,16 +112,6 @@ VALUES
 INSERT INTO dentista
 	(nome_completo, cpf, cro, especialidade)
 VALUES
-	('Ricardo Alencar Souza','12345678901','SP-12345','Ortodontia'),
-	('Mariana Dias Ferreira','23456789012','RJ-23456','Implantodontia'),
-	('Carlos Alberto Menezes', '34567890123','MG-34567','Implantodontia'),
-	('Beatriz Santos Oliveira','45678901234','PR-45678','Endodontia'),
-	('Fernando Costa Silva', '56789012345','SC-56789','Periodontia'),
-	('Juliana Lima Rocha','67890123456','RS-67890','Odontologia'),
-	('Roberto Pires Gomes', '78901234567','BA-78901','Endodontia'),
-	('Patrícia Mendes Vaz', '89012345678','ES-89012','Prótese Dentária'),
-	('Gustavo Henrique Luz', '90123456789','GO-90123','Estomatologia'),
-	('Helena Silveira Ramos','01234567890','DF-01234','Odontogeriatria'),
 	('Ricardo Alencar Souza', '12345678901', 'SP-12345', 'Ortodontia'),
 	('Mariana Dias Ferreira', '23456789012', 'RJ-23456', 'Implantodontia'),
 	('Carlos Alberto Menezes', '34567890123', 'MG-34567','Implantodontia'),
@@ -254,36 +244,36 @@ VALUES
 INSERT INTO consulta
 	(data_horario, status, id_paciente, id_dentista)
 VALUES
-('2024-05-10 08:30:00', 'Concluido',1, 1),
-('2024-05-10 10:00:00', 'Agendado',2, 7),
-('2024-05-11 14:00:00', 'Agendado',3, 2),
-('2024-05-12 09:15:00', 'Concluido',4, 1),
-('2024-05-12 11:00:00', 'Em andamento', 5, 4),
-('2024-05-13 15:30:00', 'Agendado',6, 8),
-('2024-05-14 08:00:00', 'Cancelado',7, 5),
-('2024-05-14 16:45:00', 'Concluido', 8, 6),
-('2024-05-15 10:30:00', 'Em andamento', 9, 5),
-('2024-05-15 14:00:00', 'Agendado', 10, 3),
-('2024-05-16 09:00:00', 'Concluido', 11, 11),
-('2024-05-16 11:30:00', 'Agendado', 12, 12),
-('2024-05-17 08:00:00', 'Cancelado', 13, 13),
-('2024-05-17 14:00:00', 'Concluido', 14, 14),
-('2024-05-18 10:00:00', 'Agendado', 15, 15),
-('2024-05-18 16:00:00', 'Em andamento', 16, 16),
-('2024-05-19 09:30:00', 'Concluido', 17, 17),
-('2024-05-19 13:00:00', 'Agendado', 18, 18),
-('2024-05-20 08:30:00', 'Cancelado', 19, 19),
-('2024-05-20 15:00:00', 'Concluido', 20, 20),
-('2024-05-21 11:00:00', 'Agendado', 21, 21),
-('2024-05-21 17:30:00', 'Em andamento', 22, 22),
-('2024-05-22 09:00:00', 'Concluido', 23, 23),
-('2024-05-22 14:00:00', 'Agendado', 24, 24),
-('2024-05-23 10:30:00', 'Cancelado', 25, 25),
-('2024-05-23 16:00:00', 'Concluido', 26, 26),
-('2024-05-24 08:00:00', 'Agendado', 27, 27),
-('2024-05-24 13:30:00', 'Em andamento', 28, 28),
-('2024-05-25 10:00:00', 'Concluido', 29, 29),
-('2024-05-25 15:00:00', 'Agendado', 30, 30);
+('2024-05-10 08:30:00', 'Concluido', 1, 1, 1),   
+('2024-05-10 10:00:00', 'Agendado', 2, 7, 4),    
+('2024-05-11 14:00:00', 'Agendado', 3, 2, 2),    
+('2024-05-12 09:15:00', 'Concluido', 4, 1, 1),   
+('2024-05-12 11:00:00', 'Em andamento', 5, 4, 4),
+('2024-05-13 15:30:00', 'Agendado', 6, 8, 8),    
+('2024-05-14 08:00:00', 'Cancelado', 7, 5, 5),   
+('2024-05-14 16:45:00', 'Concluido', 8, 6, 6),   
+('2024-05-15 10:30:00', 'Em andamento', 9, 5, 5),
+('2024-05-15 14:00:00', 'Agendado', 10, 3, 2),   
+('2024-05-16 09:00:00', 'Concluido', 11, 11, 1), 
+('2024-05-16 11:30:00', 'Agendado', 12, 12, 12), 
+('2024-05-17 08:00:00', 'Cancelado', 13, 13, 13),
+('2024-05-17 14:00:00', 'Concluido', 14, 14, 14),
+('2024-05-18 10:00:00', 'Agendado', 15, 15, 15), 
+('2024-05-18 16:00:00', 'Em andamento', 16, 16, 16), 
+('2024-05-19 09:30:00', 'Concluido', 17, 17, 17),
+('2024-05-19 13:00:00', 'Agendado', 18, 18, 5),  
+('2024-05-20 08:30:00', 'Cancelado', 19, 19, 8), 
+('2024-05-20 15:00:00', 'Concluido', 20, 20, 4), 
+('2024-05-21 11:00:00', 'Agendado', 21, 21, 2),  
+('2024-05-21 17:30:00', 'Em andamento', 22, 22, 12), 
+('2024-05-22 09:00:00', 'Concluido', 23, 23, 13), 
+('2024-05-22 14:00:00', 'Agendado', 24, 24, 1),  
+('2024-05-23 10:30:00', 'Cancelado', 25, 25, 9), 
+('2024-05-23 16:00:00', 'Concluido', 26, 26, 10), 
+('2024-05-24 08:00:00', 'Agendado', 27, 27, 6),  
+('2024-05-24 13:30:00', 'Em andamento', 28, 28, 17), 
+('2024-05-25 10:00:00', 'Concluido', 29, 29, 2), 
+('2024-05-25 15:00:00', 'Agendado', 30, 30, 14); 
 
 
 --> COMANDO DE INSERÇÃO NA TABELA PROC_CONSULT_CONTER:

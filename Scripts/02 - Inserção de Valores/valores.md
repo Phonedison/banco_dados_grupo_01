@@ -48,16 +48,6 @@
 ### Para a tabela dentista :
 
 ```sql
- ('Ricardo Alencar Souza','12345678901','SP-12345','Ortodontia'),
-('Mariana Dias Ferreira','23456789012','RJ-23456','Implantodontia'),
-('Carlos Alberto Menezes', '34567890123','MG-34567','Implantodontia'),
-('Beatriz Santos Oliveira','45678901234','PR-45678','Endodontia'),
-('Fernando Costa Silva', '56789012345','SC-56789','Periodontia'),
-('Juliana Lima Rocha','67890123456','RS-67890','Odontologia'),
-('Roberto Pires Gomes', '78901234567','BA-78901','Endodontia'),
-('Patrícia Mendes Vaz', '89012345678','ES-89012','Prótese Dentária'),
-('Gustavo Henrique Luz', '90123456789','GO-90123','Estomatologia'),
-('Helena Silveira Ramos','01234567890','DF-01234','Odontogeriatria'),
 ('Ricardo Alencar Souza', '12345678901', 'SP-12345', 'Ortodontia'),
 ('Mariana Dias Ferreira', '23456789012', 'RJ-23456', 'Implantodontia'),
 ('Carlos Alberto Menezes', '34567890123', 'MG-34567','Implantodontia'),
