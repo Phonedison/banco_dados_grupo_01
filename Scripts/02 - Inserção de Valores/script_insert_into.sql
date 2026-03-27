@@ -177,7 +177,7 @@ VALUES
 
 --> COMANDO DE INSERÇÃO NA TABELA CONSULTA:
 INSERT INTO consulta
-	(data_horario, status, id_paciente, id_dentista)
+	(data_horario, status, id_paciente, id_dentista, id_procedimento)
 VALUES
 ('2024-05-10 08:30:00', 'Concluido', 1, 1, 1),   
 ('2024-05-10 10:00:00', 'Agendado', 2, 7, 4),    

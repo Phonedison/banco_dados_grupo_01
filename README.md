@@ -21,46 +21,45 @@ A solução foi pensada para atender o fluxo operacional da clínica, permitindo
 
 ## 👤 Pacientes
 
-- Cadastro completo:
+- **Cadastro completo**:
   - Nome, CPF, data de nascimento
-  - Contato (telefone e e-mail)
+  - Contato _(telefone e e-mail)_
   - Endereço
-- Histórico de consultas vinculado
+- **Histórico de consultas vinculado**
 
 ## 🧑‍⚕️ Dentistas
 
-- Cadastro com:
+- **Cadastro com:**
   - Nome, CPF e CRO
   - Especialidade
   - Horários de atendimento
 
 ## 📅 Consultas
 
-- Agendamento com:
+- **Agendamento com**:
   - Escolha de dentista
   - Seleção de horário disponível
 
-- Registro de:
+- **Registro de**:
   - Data e hora
   - Descrição do atendimento
-  - Prescrição (quando necessário)
-- Funcionalidades:
+  - Prescrição _(quando necessário)_
+
+- **Funcionalidades**:
   - Atualização de consultas
   - Cancelamento com regras de prazo
 
 ## 🧾 Acesso ao Sistema
 
-- Atendentes podem:
+- **Atendentes podem**:
   - Visualizar dados
   - Atualizar pacientes, dentistas e consultas
 
 ## 👥 Colaboradores
 
-|                                                              Colaborador(es) | Nome (GitHub)                                             |
-| ---------------------------------------------------------------------------: | :-------------------------------------------------------- |
-| <img src="https://avatars.githubusercontent.com/u/265863658?v=4" width="75"> | [**Ana Luisa**](https://github.com/devAnaLuX)             |
-| <img src="https://avatars.githubusercontent.com/u/238934459?v=4" width="75"> | [**João Victor**](https://github.com/x-c-x-c)             |
-|   <img src="https://avatars.githubusercontent.com/u/7592603?v=4" width="75"> | [**Lucas da Silva**](https://github.com/Phonedison)       |
-|  <img src="https://avatars.githubusercontent.com/u/66911991?v=4" width="75"> | [**Rafael Albino**](https://github.com/Onzecimo)          |
-| <img src="https://avatars.githubusercontent.com/u/267657658?v=4" width="75"> | [**Vinicius de Souza Lamas**](https://github.com/vLamass) |
-| <img src="https://avatars.githubusercontent.com/u/267758048?v=4" width="75"> | [**Vitor Ribeiro**](https://github.com/vitorribeiro77)    |
+[<img src="https://avatars.githubusercontent.com/u/265863658?v=4" width="75">](https://github.com/devAnaLuX)
+[<img src="https://avatars.githubusercontent.com/u/238934459?v=4" width="75">](https://github.com/x-c-x-c)
+[<img src="https://avatars.githubusercontent.com/u/7592603?v=4" width="75">](https://github.com/Phonedison)
+[<img src="https://avatars.githubusercontent.com/u/66911991?v=4" width="75">](https://github.com/Onzecimo)
+[<img src="https://avatars.githubusercontent.com/u/267657658?v=4" width="75">](https://github.com/vLamass)
+[<img src="https://avatars.githubusercontent.com/u/267758048?v=4" width="75">](https://github.com/vitorribeiro77)
