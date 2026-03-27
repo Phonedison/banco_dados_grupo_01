@@ -1,5 +1,6 @@
 /*
-1ª - Quantidade de consultas por especialidade: selecione todas as especialidades dos dentistas e faça um COUNT para contar o número total de consultas realizadas por cada especialidade.
+1ª - Quantidade de consultas por especialidade:
+Selecione todas as especialidades dos dentistas e faça um COUNT para contar o número total de consultas realizadas por cada especialidade.
 */
 
   SELECT
@@ -20,10 +21,10 @@
   --> Ordena as linhas com base no maior para o menor valor de "Quant. Consulta"
   ORDER BY "Quant. Consultas" DESC;
 
-
-
 /*
-2ª - Quantidade de consultas realizadas por cada dentista: selecione o nome de todos os dentistas e faça um COUNT para contar a quantidade de consultas realizadas por cada um e exiba em ordem decrescente pela quantidade de consultas.
+2ª - Quantidade de consultas realizadas por cada dentista:
+Selecione o nome de todos os dentistas e faça um COUNT para contar a quantidade de consultas realizadas
+por cada um e exiba em ordem decrescente pela quantidade de consultas.
 */
 
   SELECT
@@ -45,7 +46,9 @@
 
 
 /*
-3º- Pacientes com maior número de consultas: liste os pacientes e a quantidade de consultas que cada um realizou, ordenando em ordem decrescente pelo número de consultas.
+3º- Pacientes com maior número de consultas: 
+Liste os pacientes e a quantidade de consultas que cada um realizou, ordenando em ordem decrescente
+pelo número de consultas.
 */
 
 
@@ -67,10 +70,12 @@
   --> Agrupando 'id_paciente' e 'nome_completo' da tabela 'paciente'
   GROUP BY p.id_paciente, p.nome_completo
   --> Ordenando por 'id_paciente'
-  ORDER BY id_paciente DESC;
+  ORDER BY "Quant. Consultas" DESC;
 
 /*
-4º - View com lista de consultas ordenadas por data: crie uma VIEW que selecione os seguintes campos: id_consulta, nome_paciente, nome_dentista, data_consulta, procedimentos_realizados e ordene em ordem decrescente pela data da consulta.
+4º - View com lista de consultas ordenadas por data:
+Crie uma VIEW que selecione os seguintes campos: id_consulta, nome_paciente, nome_dentista, data_consulta,
+procedimentos_realizados e ordene em ordem decrescente pela data da consulta.
 */
 
   --> Cria a VIEW chamado vw_consultas
@@ -121,7 +126,8 @@
   SELECT * FROM vw_consultas;
 
 /*
-5º - Média de consultas por dentista: calcule a média de consultas realizadas por dentista.
+5º - Média de consultas por dentista: 
+Calcule a média de consultas realizadas por dentista.
 */
 
 --> Criação da view vw_porcentagem
@@ -133,10 +139,10 @@ CREATE VIEW vw_porcentagem
       --> Seleciona a entidade 'nome_completo' da tabela 'dentista'
 			den.nome_completo AS "Dentista",
 
-      --> Conta a quantidade de 'atendimento' realizado
+      --> Conta a quantidade de 'atendimento' realizado por 'dentista'
 			COUNT(con.id_consulta) AS "QTD Realizada",
 
-      --> Apresenta o 'valor total de atendimento dos dentistas'
+      --> Apresenta o 'valor total de atendimento de todos os dentistas'
 			SUM(COUNT(con.id_consulta)) OVER() AS "QTD ATENDIMENTO GERAL",
       /*
       -> Calculo de Performace:
@@ -164,19 +170,25 @@ CREATE VIEW vw_porcentagem
 --> visualiza a View
 SELECT * FROM vw_porcentagem;
 
-
+-- ---------------------------------------------------------------------------------------------------------- --
 
 
 SELECT
- --> Caulcula a média da contagem e arredonda o valor para até 2 casas decimais do valor 'qtd_consultas'
-  ROUND(  AVG(qtd_consultas) , 2) AS media_de_consulta
+ --> Calcula a média da contagem e arredonda o valor para até 2 casas decimais do valor 'qtd_consultas'
+  ROUND( AVG(qtd_consultas) , 2) AS media_de_consulta
 FROM (
 
   SELECT
-    --> 
+    --> Conta quantas consultas estão vinculadas a cada ID de dentista
     COUNT(con.id_consulta) AS qtd_consultas
+
     FROM dentista den
+
+    --> Relaciona as tabelas 'consulta' com 'dentista'  
     LEFT JOIN consulta con
+      --> Garante que a pesquisa dos valores de 'id_dentista' de 'dentista' existentes em 'consulta'
       ON den.id_dentista = con.id_dentista
+
+	  -->	Agrupa os valores utilizando como base o atributo 'nome_completo' de dentista
     GROUP BY den.id_dentista
 );

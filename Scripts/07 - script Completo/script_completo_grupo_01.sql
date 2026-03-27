@@ -1,8 +1,73 @@
-## valores
+/* ********************* SCRIPT CRIAÇÃO DB ********************* */
 
-### Para a tabela paciente :
+--> Declaração do TYPO status_consulta
+CREATE TYPE status_consulta AS ENUM ('Cancelado', 'Em andamento', 'Concluido', 'Agendado');
 
-```sql
+--> DECLARAÇÃO DA TABELA PACIENTE:
+CREATE TABLE paciente (
+    id_paciente SERIAL PRIMARY KEY,
+    nome_completo VARCHAR(150) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    data_nascimento DATE NOT NULL,
+    telefone VARCHAR(15),
+    email VARCHAR(100),
+    endereco VARCHAR(150) NOT NULL
+);
+
+--> DECLARAÇÃO DA TABELA DENTISTA:
+CREATE TABLE dentista (
+    id_dentista SERIAL PRIMARY KEY,
+    nome_completo VARCHAR(150) NOT NULL,
+    cpf VARCHAR(11) UNIQUE NOT NULL,
+    cro VARCHAR(15) UNIQUE NOT NULL,
+    especialidade VARCHAR(100) NOT NULL
+);
+
+--> DECLARAÇÃO DA TABELA PROCEDIMENTO:
+CREATE TABLE procedimento (
+    id_procedimento SERIAL PRIMARY KEY,
+    nome_procedimento VARCHAR(150) NOT NULL,
+    descricao TEXT,
+    duracao TIME NOT NULL
+);
+
+--> DECLARAÇÃO DA TABELA HORARIO ATENDIMENTO:
+CREATE TABLE horario_atendimento (
+    id_horario_atendimento SERIAL PRIMARY KEY,
+    horario_inicial TIME NOT NULL,
+    horario_final TIME NOT NULL,
+    
+    --> Declaração das chaves estrangeiras
+    id_dentista INTEGER REFERENCES dentista(id_dentista)
+);
+
+--> DECLARAÇÃO DA TABELA CONSULTA
+CREATE TABLE consulta (
+    id_consulta SERIAL PRIMARY KEY,
+    data_horario TIMESTAMP NOT NULL,
+    status status_consulta NOT NULL DEFAULT 'Agendado', --> PENSEI EM COMEÇAR COMO 'AGENDADO' AO INVEZ DE VAZIO
+
+    --> Declaração das chaves estrangeiras
+    id_paciente INTEGER REFERENCES paciente(id_paciente),
+    id_dentista INTEGER REFERENCES dentista(id_dentista),
+    id_procedimento INTEGER REFERENCES procedimento(id_procedimento)
+);
+
+---> DECLARAÇÃO DA TABELA LIGAÇÃO (M,M : Consulta <---> Procedimento)
+CREATE TABLE proc_consult_conter (  
+    id_consulta INTEGER REFERENCES consulta(id_consulta) ON DELETE RESTRICT,
+    id_procedimento INTEGER REFERENCES procedimento(id_procedimento) ON DELETE RESTRICT,
+
+    --> Definindo a chave da tabela 
+    PRIMARY KEY (id_consulta, id_procedimento)
+);
+
+/* ********************* INSERÇÃO DE VALORES ********************* */
+
+--> COMANDO DE INSERÇÃO NA TABELA PACIENTE:
+INSERT INTO paciente
+	(nome_completo, cpf, data_nascimento, telefone, email, endereco)
+VALUES
 	('Ana Maria Silva',           			'12345678900',     					 '1993-05-20',     					 '11999887766',     				 'ana.silva@mail.com',       	  'Rua das Flores, 100'),
 	('Marcos Paulo Lima',         			'23456789011',     					 '1980-08-12',     					 '11988776655',     				 'marcos.lima@mail.com',     		    'Av. Brasil, 210'),
 	('Pedro Almeida Oliveira',    			'34567890122',     					 '1989-10-15',     					 '11977665544',     				 'pedro.almeida@mail.com',   			    'Rua Joana, 31'),
@@ -43,12 +108,12 @@
 	('Bernardo Cavalcanti',							'88990011223',							 '1981-01-30',							 '81912345678',							 'bernardo.c@email.com',							 'Olinda, 2525'),
 	('Cecília Meireles',							 	'99001122334',							 '1999-05-05',							 '85912345678',							 'cecilia.m@email.com',								'Aldeota, 2626'),
 	('Davi Lucca Silva',							  '00112233445',							 '2010-10-10',						 	 '92912345678',							 'davi.lucca@email.com',				 'Adrianópolis, 2727');
-```
 
-### Para a tabela dentista :
-
-```sql
-  ('Ricardo Alencar Souza',      '12345678901',      'SP-12345',    'Ortodontia'),
+--> COMANDO DE INSERÇÃO NA TABELA DENTISTA:
+INSERT INTO dentista
+	(nome_completo, cpf, cro, especialidade)
+VALUES
+	('Ricardo Alencar Souza',      '12345678901',      'SP-12345',    'Ortodontia'),
 	('Mariana Dias Ferreira',      '23456789012',      'RJ-23456',    'Implantodontia'),
 	('Carlos Alberto Menezes',     '34567890123',      'MG-34567',    'Implantodontia'),
 	('Beatriz Santos Oliveira',    '45678901234',      'PR-45678',    'Endodontia'),
@@ -89,12 +154,13 @@
 	('Bruno Gagliasso Pires',			 '90011223344',			 'SP-90901',		'Implantodontia'),
 	('Marina Ruy Barbosa',			   '01122334455',			 'RJ-01012',		'Radiologia Odontológica');
 
-```
 
-### Para a tabela procedimento:
 
-```sql
-  ('Profilaxia Simples',	        			'Remoção de placa bacteriana e polimento coronário.',	               									'00:40:00'),
+--> COMANDO DE INSERÇÃO NA PROCEDIMENTO:
+INSERT INTO procedimento
+	(nome_procedimento, descricao, duracao)
+VALUES
+	('Profilaxia Simples',	        			'Remoção de placa bacteriana e polimento coronário.',	               									'00:40:00'),
 	('Aplicação de Flúor',	        			'Aplicação de flúor tópico para remineralização do esmalte.',	       									'00:40:00'),
 	('Exame Clínico',	            				'Avaliação visual e tátil da cavidade bucal e tecidos moles.',	   										'00:40:00'),
 	('Restauração de Resina',	    				'Reconstrução estética e funcional do dente 26 (Face O).',	       										'00:40:00'),
@@ -134,12 +200,14 @@
 	('Odontopediatria', 									'Condicionamento infantil e selante de fóssulas e fissuras.', 												'00:50:00'),
 	('Cirurgia Pré-Protética', 						'Regularização de rebordo alveolar para uso de prótese.', 														'01:15:00'),
 	('Avaliação de DTM', 									'Diagnóstico de disfunção da articulação temporomandibular.', 												'01:00:00');
-```
+	
 
-### Para a tabela horario_atendimento:
 
-```sql
-  ('08:00:00',    '12:00:00',     1),
+--> COMANDO DE INSERÇÃO NA TABELA HORARIO_ATENDIMENTO:
+INSERT INTO horario_atendimento
+	(horario_inicial, horario_final, id_dentista)
+VALUES
+	('08:00:00',    '12:00:00',     1),
 	('13:30:00',    '17:30:00',     1),
 	('09:00:00',    '12:00:00',     2),
 	('08:00:00',    '13:00:00',     3),
@@ -180,11 +248,13 @@
 	('14:00:00', 		'19:00:00', 		23),
 	('09:00:00', 		'15:00:00', 		24),
 	('08:00:00', 		'12:00:00', 		25);
-```
+	
 
-### Para a tabela consulta:
 
-```sql
+--> COMANDO DE INSERÇÃO NA TABELA CONSULTA:
+INSERT INTO consulta
+	(data_horario, status, id_paciente, id_dentista)
+VALUES
 	('2024-05-10 08:30:00',			 'Concluido',										   1, 1),
 	('2024-05-10 10:00:00',			 'Agendado',										   2, 7),
 	('2024-05-11 14:00:00',			 'Agendado',										   3, 2),
@@ -215,11 +285,12 @@
 	('2024-05-24 13:30:00',			 'Em andamento',								 28, 28),
 	('2024-05-25 10:00:00',			 'Concluido',										 29, 29),
 	('2024-05-25 15:00:00',			 'Agendado',										 30, 30);
-```
 
-### Para a tabela proc_consult_conter:
 
-```sql
+--> COMANDO DE INSERÇÃO NA TABELA PROC_CONSULT_CONTER:
+INSERT INTO proc_consult_conter
+	(id_consulta, id_procedimento) 
+VALUES 
 	(1, 1), 	(1, 2), 	(2, 3), 	(3, 1), 	(4, 4),
 	(5, 2), 	(5, 5), 	(6, 3), 	(7, 1), 	(8, 6),
 	(9, 7), 	(10, 8),	(11, 9), 	(12, 10), (12, 1),
@@ -227,4 +298,259 @@
 	(18, 16), (19, 17), (20, 18), (21, 19), (22, 20),
 	(23, 21), (24, 22), (25, 23), (25, 24), (26, 25),
 	(27, 26), (28, 27), (29, 28), (30, 29), (30, 30);
-```
+
+/* ********************* CRIAÇÃO DOS INDEXS ********************* */
+
+--> INDEX para consultar TABELA paciente:
+CREATE INDEX consultar_nome_paciente ON paciente (nome_completo); --> por nome do paciente
+
+--> INDEX para consultar TABELA consulta:
+CREATE INDEX consultar_data_consulta ON consulta (data_horario); --> por data / horário
+CREATE INDEX consultar_status ON consulta (status); --> por status
+
+--> INDEX para consultar TABELA dentista:
+CREATE INDEX consultar_dentista ON dentista (nome_completo); --> por nome do dentista
+CREATE INDEX consultar_especialidade ON dentista (especialidade); --> por especialidade
+
+--> INDEX para consultar TABELA procedimento:
+CREATE INDEX consultar_procedimento ON procedimento (nome_procedimento); --> por procedimento
+
+/* ********************* ATUALIZAÇÃO DE DADOS ********************* */
+
+--> Atualiza a consulta de 'id_consulta 5' para 'CONCLUIDO' na tabela consulta
+UPDATE consulta
+SET
+  status = 'Concluido'
+WHERE id_consulta = 5;
+
+--> Atualiza o telefone do paciente de 'cpf  -> 56789012344' e 'endereço  -> Rua do Imperador, 100 - Centro, Petrópolis' 'telefone -> (24) 99999-8888' na tabela paciente
+UPDATE paciente
+SET
+  telefone = '(24) 99999-8888',
+  endereco = 'Rua do Imperador, 100 - Centro, Petrópolis'
+WHERE cpf = '56789012344';
+
+--> Atualiza a tabela consulta, somando 2h' ao horário marcado para todos os agendamentos do dentista com o id_dentista igual 2 que foram marcados no dia '2024-05-10'
+UPDATE consulta
+SET
+  data_horario = data_horario + '02:00:00'  
+WHERE id_dentista = 2
+AND data_horario::DATE = '2024-05-11'
+AND status = 'Agendado';
+
+
+/* ********************* EXCLUSÃO DE REGISTROS ********************* */
+
+--> Remove o horário final do dentista de id_dentista 3 que sejam acima ou igual a '18:00:00'
+DELETE FROM horario_atendimento
+WHERE id_dentista = 3
+AND horario_final >= '18:00:00';
+
+--> Remove um vinculo entre a consulta de id_consulta = 6 e id_procedimento = 2 na tabela proc_consult_conter
+DELETE FROM proc_consult_conter
+WHERE id_consulta = 6
+AND id_procedimento = 2;
+
+--> Remove da tabela consulta onde o status seja 'Cancelado' e data_horario maior que '2024-05-13 15:30:00'
+DELETE FROM consulta
+WHERE status = 'Cancelado'
+AND data_horario > '2024-05-13 15:30:00';
+
+/* ********************* CONSULTAS CONTEXTUALIZADAS ********************* */
+
+/*
+1ª - Quantidade de consultas por especialidade:
+Selecione todas as especialidades dos dentistas e faça um COUNT para contar o número total de consultas realizadas por cada especialidade.
+*/
+
+  SELECT
+    --> Seleciona a coluna "Especialidade"
+    d.especialidade "Especialidade",
+    --> Conta o total de registros para cada "Especialidade"
+    COUNT (c.id_consulta) "Quant. Consultas"
+    
+  FROM consulta c
+
+  --> Relaciona as tabelas 'consultas' e 'dentista'
+  INNER JOIN dentista d
+    --> Garante apenas a pesquisa com os valores de id_dentista existentes em 'consulta' e 'dentista'
+    ON c.id_dentista = d.id_dentista
+
+  --> Agrupo o resultados pelo nome da "Especialidade"
+  GROUP BY d.especialidade
+  --> Ordena as linhas com base no maior para o menor valor de "Quant. Consulta"
+  ORDER BY "Quant. Consultas" DESC;
+
+
+
+/*
+2ª - Quantidade de consultas realizadas por cada dentista:
+Selecione o nome de todos os dentistas e faça um COUNT para contar a quantidade de consultas realizadas
+por cada um e exiba em ordem decrescente pela quantidade de consultas.
+*/
+
+  SELECT
+    --> Seleciona a coluna que contém o nome do "Dentista"
+    d.nome_completo "Dentista", 
+    --> Conta o total de registros para cada "Dentista"
+    COUNT(c.id_consulta) "Quant. Consultas"
+
+  FROM dentista d
+  --> Relaciona as tabelas 'dentista' e 'consulta'
+  LEFT JOIN consulta c
+   --> Garante apenas a pesquisa com os valores de id_dentista de 'dentista' presentes em 'consulta'
+    ON c.id_dentista = d.id_dentista
+    
+  --> Agrupo o resultados pela entidade 'nome_completo'
+  GROUP BY d.nome_completo
+  --> Ordena as linhas com base no maior para o menor valor de "Quant. Consultas"
+  ORDER BY "Quant. Consultas" DESC;
+
+
+/*
+3º- Pacientes com maior número de consultas: 
+Liste os pacientes e a quantidade de consultas que cada um realizou, ordenando em ordem decrescente
+pelo número de consultas.
+*/
+
+
+  SELECT
+    --> Seleciona a coluna "id_paciente"
+    p.id_paciente,
+    --> Seleciona a coluna "nome_completo"
+    p.nome_completo "Nome Paciente",
+    --> Conta o total de registros para cada "tipo de status"
+    COUNT (c.status) "Quant. Consultas"
+
+  FROM paciente p
+  --> Relaciona as tabelas 'paciente' e 'consulta'
+  LEFT JOIN consulta c
+   --> Garante apenas a pesquisa com os valores de id_paciente de 'paciente' presentes em 'consulta'
+    ON p.id_paciente = c.id_paciente
+  --> Exigindo o retorno de todos o 'valores de status' da tabela 'consulta' que são diferentes de 'Cancelado'
+  WHERE c.status <> 'Cancelado'
+  --> Agrupando 'id_paciente' e 'nome_completo' da tabela 'paciente'
+  GROUP BY p.id_paciente, p.nome_completo
+  --> Ordenando por 'id_paciente'
+  ORDER BY "Quant. Consultas" DESC;
+
+/*
+4º - View com lista de consultas ordenadas por data:
+Crie uma VIEW que selecione os seguintes campos: id_consulta, nome_paciente, nome_dentista, data_consulta,
+procedimentos_realizados e ordene em ordem decrescente pela data da consulta.
+*/
+
+  --> Cria a VIEW chamado vw_consultas
+  CREATE VIEW vw_consultas AS
+  
+  SELECT
+  --> Seleciona a coluna "id_consulta" da tabela consulta
+    c.id_consulta,
+    --> Seleciona a coluna "nome_completo" da tabela consulta
+    p.nome_completo "Paciente",
+    --> Seleciona a coluna "nome_completo" da tabela dentista
+    d.nome_completo "Dentista",
+    --> Seleciona a coluna "data_horario" da tabela consulta
+    c.data_horario "Data/Horário",
+    --> Seleciona a coluna "procedimento" da tabela procedimento
+    pr.nome_procedimento "Procedimento"
+    
+  FROM consulta c
+  --> Relaciona as tabelas 'consulta' com 'paciente'
+  INNER JOIN paciente p 
+    --> Garante apenas a pesquisa com os valores de id_paciente de consulta existentes em 'paciente'
+    ON p.id_paciente = c.id_paciente  
+  --> Relaciona as tabelas 'dentista' com 'consulta'
+  INNER JOIN dentista d 
+     --> Garante apenas a pesquisa com os valores de id_dentista de consulta existentes em 'dentista'
+    ON d.id_dentista = c.id_dentista
+  --> Relaciona as tabelas 'consulta' com 'proc_consult_conter'  
+  INNER JOIN proc_consult_conter pro 
+    --> Garante apenas a pesquisa com os valores de id_consula de consulta existentes em 'dentista'
+    ON pro.id_consulta = c.id_consulta
+  --> Relaciona as tabelas 'proc_consult_conter' com 'procedimento'  
+  INNER JOIN procedimento pr
+  --> Garante apenas a pesquisa com os valores de id_procedimento de proc_consult_conter existentes em 'procedimento'
+    ON pr.id_procedimento = pro.id_procedimento
+    
+  --> Agrupo os atributos
+  GROUP BY
+    c.id_consulta,
+    p.nome_completo,
+    d.nome_completo,
+    c.data_horario,
+    pr.nome_procedimento
+
+  --> Ordenando por data_horario por 'consulta'  
+  ORDER BY c.data_horario DESC;
+
+  --> Utiliza a View 'vw_consultas' para visualizar os dados  
+  SELECT * FROM vw_consultas;
+
+/*
+5º - Média de consultas por dentista: 
+Calcule a média de consultas realizadas por dentista.
+*/
+
+--> Criação da view vw_porcentagem
+CREATE VIEW vw_porcentagem
+  --> que contém os valores de atendimento de cada dentista / valor total de atendimento / porcentagem 
+	AS (
+    
+		SELECT
+      --> Seleciona a entidade 'nome_completo' da tabela 'dentista'
+			den.nome_completo AS "Dentista",
+
+      --> Conta a quantidade de 'atendimento' realizado por 'dentista'
+			COUNT(con.id_consulta) AS "QTD Realizada",
+
+      --> Apresenta o 'valor total de atendimento de todos os dentistas'
+			SUM(COUNT(con.id_consulta)) OVER() AS "QTD ATENDIMENTO GERAL",
+      /*
+      -> Calculo de Performace:
+        --> Multiplica por cem a contagem de linhas presentes na tabela consulta
+        --> Divide a multiplicação pelo total geral de atendimento
+        --> ROUND([valor]): arredonda o valor da divisão para até duas casas decimais
+        --> CONCAT([valor],'%'): transforma o valor arredondado em uma string com o simbolo % 
+      */
+			CONCAT(ROUND(COUNT(con.*) * 100.0 / SUM(COUNT(con.*)) OVER(), 2), ' %') AS "%"
+		
+		FROM 
+		  dentista den
+		
+    --> Relaciona as tabelas 'consulta' com 'dentista'  
+		LEFT JOIN consulta con
+       --> Garante que a pesquisa dos valores de 'id_dentista' de 'dentista' existentes em 'consulta'
+			ON den.id_dentista = con.id_dentista AND con.status = 'Concluido' --> Onde status de 'consulta' seja igual a "Concluido"(Realizado)
+			
+		-->	Agrupa os valores utilizando como base o atributo 'nome_completo' de dentista
+		GROUP BY 
+		  den.nome_completo
+
+	);
+
+--> visualiza a View
+SELECT * FROM vw_porcentagem;
+
+-- --
+
+
+SELECT
+ --> Calcula a média da contagem e arredonda o valor para até 2 casas decimais do valor 'qtd_consultas'
+  ROUND( AVG(qtd_consultas) , 2) AS media_de_consulta
+FROM (
+
+  SELECT
+    --> Conta quantas consultas estão vinculadas a cada ID de dentista
+    COUNT(con.id_consulta) AS qtd_consultas
+
+    FROM dentista den
+
+    --> Relaciona as tabelas 'consulta' com 'dentista'  
+    LEFT JOIN consulta con
+      --> Garante que a pesquisa dos valores de 'id_dentista' de 'dentista' existentes em 'consulta'
+      ON den.id_dentista = con.id_dentista
+
+	  -->	Agrupa os valores utilizando como base o atributo 'nome_completo' de dentista
+    GROUP BY den.id_dentista
+);
