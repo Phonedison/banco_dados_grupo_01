@@ -12,7 +12,7 @@ A solução foi pensada para atender o fluxo operacional da clínica, permitindo
 - Organizar o cadastro de pacientes e dentistas
 - Controlar o agendamento de consultas
 - Registrar atendimentos realizados
-- Estruturar um banco de dados completo (conceitual, lógico e físico)
+- Estruturar um banco de dados completo _(conceitual, lógico e físico)_
 - Aplicar consultas SQL para análise de dados
 
 ---
@@ -115,8 +115,7 @@ O projeto contempla as três etapas de modelagem:
   - Pacientes com maior número de consultas
   - Média de consultas por dentista
 
-- 👁️ **View Criada** -
-  Lista de consultas ordenadas por data, contendo:
+- 👁️ **View Criada** - Lista de consultas ordenadas por data, contendo:
   - ID da consulta
   - Nome do paciente
   - Nome do dentista

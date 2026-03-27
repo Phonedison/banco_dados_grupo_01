@@ -4,7 +4,7 @@ WHERE id_dentista = 3
 AND horario_final >= '13:00:00';
 
 --> Remove um vinculo entre a consulta de id_consulta igual a 10 de id_procedimento igual a 2 na tabela proc_consult_conter
-DELETE FROM proc_consult_contergit 
+DELETE FROM proc_consult_conter 
 WHERE id_consulta = 10 
 and id_procedimento = 2;
 
