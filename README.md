@@ -1,8 +1,9 @@
-# 🦷 Sistema de Gestão para Clínica Odontológica
+# 🦷 Trabalho de Estudo - Sistema de Gestão para Clínica Odontológica
 
 ## 📖 Sobre o Projeto
 
-Este projeto consiste no desenvolvimento de uma base de dado para uma clínica odontológica, com o objetivo de informatizar o controle de pacientes, dentistas, consultas e procedimentos realizados. A solução foi pensada para atender o fluxo operacional da clínica, permitindo o agendamento de consultas, registro de atendimentos e organização das informações de forma estruturada.
+Este projeto consiste no desenvolvimento de uma base de dado para uma clínica odontológica, com o objetivo de informatizar o controle de pacientes, dentistas, consultas e procedimentos realizados.
+A solução foi pensada para atender o fluxo operacional da clínica, permitindo o agendamento de consultas, registro de atendimentos e organização das informações de forma estruturada com base no desafio infomado.
 
 > ⚠️ O sistema não contempla funcionalidades financeiras ou de faturamento.
 
@@ -47,7 +48,13 @@ Este projeto consiste no desenvolvimento de uma base de dado para uma clínica o
   - Atualização de consultas
   - Cancelamento com regras de prazo
 
-<h1>👥 Colaboradores</h1>
+## 🧾 Acesso ao Sistema
+
+- Atendentes podem:
+  - Visualizar dados
+  - Atualizar pacientes, dentistas e consultas
+
+## 👥 Colaboradores
 
 |                                                              Colaborador(es) | Nome (GitHub)                                             |
 | ---------------------------------------------------------------------------: | :-------------------------------------------------------- |
